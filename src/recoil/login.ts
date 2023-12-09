@@ -6,7 +6,7 @@ interface loginProps {
   createdate: string;
 }
 
-const loginState = atom<loginProps>({
+const loginState = atom<loginProps | null>({
   key: "loginState",
   default: null,
 });

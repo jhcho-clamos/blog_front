@@ -1,7 +1,7 @@
 const SignupPage = async () => {
   const fetchAction = async (): Promise<any> => {
     const action = await fetch(
-      "http://localhost:5000/api/user/mapper/get/admin",
+      "http://192.168.25.17:5000/api/user/mapper/get/admin",
     ).then();
     return await action.json();
   };
