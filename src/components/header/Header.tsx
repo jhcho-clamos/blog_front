@@ -11,11 +11,11 @@ import Link from "next/link";
 const Header = () => {
   return (
     <Box
-      position="fixed"
+      position="absolute"
       sx={{
         width: "100%",
         top: 0,
-        zIndex: 1000,
+        zIndex: "10",
       }}
     >
       <AppBar

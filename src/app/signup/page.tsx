@@ -1,6 +1,8 @@
+import Typography from "@mui/material/Typography";
+
 const SignupPage = async () => {
   const fetchAction = async (): Promise<any> => {
-    const action = await fetch("http://192.168.0.66:5000/api/user/login", {
+    const action = await fetch("http://localhost:5000/api/user/login", {
       method: "post",
       body: JSON.stringify({
         id: "clamos",
@@ -17,12 +19,7 @@ const SignupPage = async () => {
 
   return (
     <div className="text-white">
-      {Object?.entries(data)?.map(([key, value]: any, index) => (
-        <>
-          <div>{key}</div>
-          <div>{value}</div>
-        </>
-      ))}
+      <Typography sx={{ color: "white" }}>{data?.name}</Typography>
     </div>
   );
 };

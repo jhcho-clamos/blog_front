@@ -6,15 +6,16 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div
-      className="w-full"
+      className="w-full flex-col"
       style={{
         height: "auto",
         minHeight: "100vh",
-        padding: "100px 15px",
         position: "relative",
         boxSizing: "border-box",
-        background: "black",
+        background: "#101112",
+        padding: "100px 20px",
         display: "flex",
+        color: "white",
       }}
     >
       {children}

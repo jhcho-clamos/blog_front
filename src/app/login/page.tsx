@@ -1,133 +1,18 @@
-"use client";
-import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import Login from "@/components/login/Login";
 
 const LoginPage = () => {
   return (
-    <div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>
-        login pagelogin pagelogin pagelogin page
-      </div>
-      <div style={{ color: "white" }}>login page</div>
-      <div style={{ color: "white" }}>login page</div>
-    </div>
+    <Box
+      sx={{
+        flexGrow: 1,
+        background: "url(/assets/img/background.png) no-repeat center",
+        backgroundSize: "contain",
+      }}
+      className="flex items-center justify-center"
+    >
+      <Login />
+    </Box>
   );
 };
 
