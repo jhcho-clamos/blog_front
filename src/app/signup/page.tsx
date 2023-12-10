@@ -1,8 +1,16 @@
 const SignupPage = async () => {
   const fetchAction = async (): Promise<any> => {
-    const action = await fetch(
-      "http://192.168.25.17:5000/api/user/mapper/get/admin",
-    ).then();
+    const action = await fetch("http://192.168.0.66:5000/api/user/login", {
+      method: "post",
+      body: JSON.stringify({
+        id: "clamos",
+        password: "clamos",
+        name: "관리자",
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then();
     return await action.json();
   };
   const { data } = await fetchAction();
