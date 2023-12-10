@@ -13,7 +13,6 @@ const RecoilRootProvider = ({ children }: RecoilProps) => {
     <RecoilRoot>
       <Header />
       <Layout>
-        <span>hi</span>
         <Toaster />
         {children}
       </Layout>

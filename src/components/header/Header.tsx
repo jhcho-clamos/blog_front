@@ -42,19 +42,19 @@ const Header = () => {
           >
             <Menu />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, color: "white" }}
-          >
+          <Box sx={{ flexGrow: 1 }}>
             <Link href="/">dev_blog</Link>
-          </Typography>
-          <Button color="inherit" variant="text">
-            <Link href="/signup">signup</Link>
-          </Button>
-          <Button color="inherit" variant="text">
-            <Link href="/login">login</Link>
-          </Button>
+          </Box>
+          <Box sx={{ padding: "0 10px" }}>
+            <Link href="/signup">
+              <span>Signup</span>
+            </Link>
+          </Box>
+          <Box sx={{ padding: "0 10px" }}>
+            <Link href="/login">
+              <span>Login</span>
+            </Link>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

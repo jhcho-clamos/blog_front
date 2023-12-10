@@ -5,7 +5,6 @@ const Login = () => {
   return (
     <div className={Styles.login_from}>
       <div className="flex flex-grow">
-        <Text></Text>
         <div className="flex flex-grow flex-col">
           <input className={Styles.input_box} type="text" />
           <input className={Styles.input_box} type="text" />

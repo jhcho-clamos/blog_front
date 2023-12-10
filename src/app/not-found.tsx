@@ -8,9 +8,7 @@ const NotFound = () => {
       <div>
         <Link href="/">
           <div className={`${styles.error_info_box} text-center`}>
-            <Button color="inherit" variant="text">
-              Not Found Page
-            </Button>
+            <span className="text-black">Not Found Page</span>
           </div>
         </Link>
         <Typography
