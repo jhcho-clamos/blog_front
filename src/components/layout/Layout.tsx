@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Header from "@/components/header/Header";
 
 interface LayoutProps {
   children: React.ReactNode | React.ReactNode;
 }
 const Layout = ({ children }: LayoutProps) => {
+  const [mount, setMount] = useState<boolean>(false);
+  useEffect(() => {
+    setMount(true);
+    return () => setMount(false);
+  }, []);
+  if (!mount) return null;
   return (
     <div
       className="w-full flex-col"
@@ -13,12 +20,12 @@ const Layout = ({ children }: LayoutProps) => {
         position: "relative",
         boxSizing: "border-box",
         background: "#101112",
-        padding: "100px 20px",
         display: "flex",
         color: "white",
       }}
     >
-      {children}
+      <Header />
+      <div style={{ padding: "100px 20px" }}>{children}</div>
     </div>
   );
 };

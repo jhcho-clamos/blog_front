@@ -6,14 +6,16 @@ import IconButton from "@mui/material/IconButton";
 import { Menu } from "@mui/icons-material";
 import Link from "next/link";
 import Text from "@/components/styled/global/Text";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useResetRecoilState } from "recoil";
 import { loginSelector } from "@/recoil/login";
 
 const Header = () => {
   const getLoginState = useRecoilValue(loginSelector);
+  const resetLoginState = useResetRecoilState(loginSelector);
+
   return (
     <Box
-      position="absolute"
+      position="relative"
       sx={{
         width: "100%",
         top: 0,
@@ -47,10 +49,18 @@ const Header = () => {
           <Box sx={{ flexGrow: 1 }}>
             <Link href="/">dev_blog</Link>
           </Box>
-          {getLoginState ? (
-            <Box>
-              <Text>{getLoginState.name || ""}</Text>
-            </Box>
+          {getLoginState?.name != null ? (
+            <>
+              <Box sx={{ padding: "0 10px" }}>
+                <Text>{getLoginState.name || ""}</Text>
+              </Box>
+              <Box
+                sx={{ padding: "0 10px", cursor: "pointer" }}
+                onClick={() => resetLoginState()}
+              >
+                <Text>Logout</Text>
+              </Box>
+            </>
           ) : (
             <>
               <Box sx={{ padding: "0 10px" }}>

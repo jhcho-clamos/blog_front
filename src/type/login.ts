@@ -4,7 +4,7 @@ export interface LoginDefaultProps {
 }
 export interface LoginProps_Get extends LoginDefaultProps {
   name: string;
-  createdate: string;
+  createDate: string;
 }
 
 export interface LoginProps_Post extends LoginDefaultProps {

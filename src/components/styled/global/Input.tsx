@@ -24,6 +24,7 @@ interface InputProps extends InputStyleProps {
   title?: string;
   password?: boolean;
   onKeyDown?: (e: any) => void;
+  parentStyle?: strng;
 }
 
 const InputBox = styled("input")<InputStyleProps>`
@@ -49,7 +50,7 @@ const Input = forwardRef((props: InputProps, ref: any) => {
   // }));
 
   return (
-    <Box flexGrow={1}>
+    <Box flexGrow={1} {...props.parentStyle}>
       {props.title && (
         <Box flexGrow={1} className="flex flex-col">
           <Box flexGrow={1} className="flex flex-row">

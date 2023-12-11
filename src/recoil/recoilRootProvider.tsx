@@ -11,7 +11,6 @@ interface RecoilProps {
 const RecoilRootProvider = ({ children }: RecoilProps) => {
   return (
     <RecoilRoot>
-      <Header />
       <Layout>
         <Toaster />
         {children}

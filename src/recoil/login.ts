@@ -4,7 +4,7 @@ import { localStorageEffect } from "@/storage/storage";
 interface loginProps {
   id: string;
   name: string;
-  createdate: string;
+  createDate: string;
 }
 
 const loginState = atom<loginProps | null>({
@@ -15,7 +15,10 @@ const loginState = atom<loginProps | null>({
 
 export const loginSelector = selector({
   key: "loginSelector",
-  get: ({ get }) => get(loginState),
+  get: ({ get }) => {
+    const values = get(loginState);
+    return values;
+  },
   set: ({ set, reset }, newValue) => {
     if (newValue instanceof DefaultValue) {
       reset(loginState);

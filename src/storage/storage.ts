@@ -21,6 +21,7 @@ export const localStorageEffect =
         return JSON.parse(storage.getItem(key) || "");
       }
     });
+
     onSet((newValue: any) => {
       if (newValue instanceof DefaultValue) {
         storage.removeItem(key);

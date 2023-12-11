@@ -48,37 +48,24 @@ const Login = () => {
     }
   };
 
-  const loginAction = () => {
-    apiGroup.authApi
-      .login({
-        id: idInput.value,
-        password: pwInput.value,
-      })
-      .then((r) => {
-        setLoginState({
-          id: r.id,
-          name: r.name,
-          createdate: r.createdate,
-        });
-      });
+  const loginAction = async () => {
+    const request = await apiGroup.authApi.login({
+      id: idInput.value,
+      password: pwInput.value,
+    });
+    setLoginState({
+      id: request.id,
+      name: request.name,
+      createDate: request.createDate,
+    });
     router.push("/");
   };
 
   return (
     <div className={Styles.login_from}>
       <div className="flex flex-grow flex-col h-full">
-        <Grid
-          container
-          spacing={3}
-          className="flex flex-grow flex-col flex-grow w-full "
-        >
-          <Grid
-            item
-            sx={{
-              textAlign: "left",
-              width: "min-content",
-            }}
-          >
+        <Box className="flex flex-col">
+          <Box className="w-min float-left">
             <Text
               color="black"
               size="2rem"
@@ -92,46 +79,46 @@ const Login = () => {
                 height: "0.15rem",
               }}
             />
-          </Grid>
-          <Grid item>
-            <Input
-              icon={
-                <PersonIcon
-                  sx={{ color: "black", width: "1.7rem", height: "1.7rem" }}
-                />
-              }
-              placeholder={"id"}
-              {...idInput}
-              className="w-full"
-              title="id"
-              ref={idRef}
-              onKeyDown={pwNextFocus}
-            />
-          </Grid>
-          <Grid item>
-            <Input
-              icon={
-                <VpnKeyRoundedIcon
-                  sx={{ color: "black", width: "1.7rem", height: "1.7rem" }}
-                />
-              }
-              placeholder={"password"}
-              {...pwInput}
-              className="w-full"
-              title="password"
-              password={true}
-              ref={pwRef}
-              onKeyDown={pwEnterAction}
-            />
-            <Box className="mt-5">
-              <Link href="/signup">
-                <Text size="1.2rem" color={theme.blue.base}>
-                  Signup
-                </Text>
-              </Link>
-            </Box>
-          </Grid>
-        </Grid>
+          </Box>
+
+          <Input
+            parentStyle={{ margin: "2rem 0" }}
+            icon={
+              <PersonIcon
+                sx={{ color: "black", width: "1.7rem", height: "1.7rem" }}
+              />
+            }
+            placeholder={"id"}
+            {...idInput}
+            className="w-full"
+            title="id"
+            ref={idRef}
+            onKeyDown={pwNextFocus}
+          />
+
+          <Input
+            icon={
+              <VpnKeyRoundedIcon
+                sx={{ color: "black", width: "1.7rem", height: "1.7rem" }}
+              />
+            }
+            placeholder={"password"}
+            {...pwInput}
+            className="w-full"
+            title="password"
+            password={true}
+            ref={pwRef}
+            onKeyDown={pwEnterAction}
+          />
+        </Box>
+        <Box className="mt-5">
+          <Link href="/signup">
+            <Text size="1.2rem" color={theme.blue.base}>
+              Signup
+            </Text>
+          </Link>
+        </Box>
+
         <Box flexGrow={1} className="flex items-end justify-center">
           <CustomButton
             bgColor={theme.blue.base}
