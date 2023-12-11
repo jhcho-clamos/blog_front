@@ -2,13 +2,15 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { Menu } from "@mui/icons-material";
 import Link from "next/link";
+import Text from "@/components/styled/global/Text";
+import { useRecoilValue } from "recoil";
+import { loginSelector } from "@/recoil/login";
 
 const Header = () => {
+  const getLoginState = useRecoilValue(loginSelector);
   return (
     <Box
       position="absolute"
@@ -45,16 +47,24 @@ const Header = () => {
           <Box sx={{ flexGrow: 1 }}>
             <Link href="/">dev_blog</Link>
           </Box>
-          <Box sx={{ padding: "0 10px" }}>
-            <Link href="/signup">
-              <span>Signup</span>
-            </Link>
-          </Box>
-          <Box sx={{ padding: "0 10px" }}>
-            <Link href="/login">
-              <span>Login</span>
-            </Link>
-          </Box>
+          {getLoginState ? (
+            <Box>
+              <Text>{getLoginState.name || ""}</Text>
+            </Box>
+          ) : (
+            <>
+              <Box sx={{ padding: "0 10px" }}>
+                <Link href="/signup">
+                  <Text>Signup</Text>
+                </Link>
+              </Box>
+              <Box sx={{ padding: "0 10px" }}>
+                <Link href="/login">
+                  <Text>Login</Text>
+                </Link>
+              </Box>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
