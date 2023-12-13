@@ -5,3 +5,7 @@
 ## server, client compoent 사용할때 주의점
 server component에서는 proxy가 먹히지 않음(절대적인 경로로 적어야 된다)
 client component사용 필요
+
+##
+https://dbility.com/690
+https://terianp.tistory.com/142
