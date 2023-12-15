@@ -61,6 +61,12 @@ const Login = ({ type }: LoginProps) => {
     }
   };
 
+  const nameEnterActon = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (isInputEnter(e)) {
+      return signupAction();
+    }
+  };
+
   const loginAction = async () => {
     try {
       const request = await apiGroup.authApi.login({
@@ -74,6 +80,7 @@ const Login = ({ type }: LoginProps) => {
         id: request.id,
         name: request.name,
         createDate: request.createDate,
+        isLogin: true,
       });
       router.push("/");
     } catch (e) {
@@ -95,6 +102,7 @@ const Login = ({ type }: LoginProps) => {
         id: request.id,
         name: request.name,
         createDate: request.createDate,
+        isLogin: true,
       });
       router.push("/");
     } catch (e) {
@@ -165,7 +173,7 @@ const Login = ({ type }: LoginProps) => {
               className="w-full"
               title="name"
               ref={nameRef}
-              onKeyDown={signupAction}
+              onKeyDown={nameEnterActon}
             />
           )}
         </Box>

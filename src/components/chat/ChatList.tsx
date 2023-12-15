@@ -43,8 +43,9 @@ const ChatList = (props: ChatListProps) => {
       </Box>
       <Box sx={{ padding: "0.5rem 0", height: "400px", position: "relative" }}>
         <Box sx={{ overflow: "auto", height: "inherit" }}>
-          {data?.map((r) => (
+          {data?.map((r, index: number) => (
             <Box
+              key={`chatlist-index${index}`}
               onClick={() => props?.setRoom(r)}
               className="flex justify-between items-center"
               sx={{

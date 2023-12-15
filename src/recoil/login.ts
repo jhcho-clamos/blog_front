@@ -5,6 +5,7 @@ interface loginProps {
   id: string;
   name: string;
   createDate: string;
+  isLogin: boolean;
 }
 
 const loginState = atom<loginProps | null>({

@@ -12,6 +12,7 @@ interface InputStyleProps {
   color?: string;
   bgColor?: string;
   outline?: string;
+  style?: any;
 }
 
 interface InputProps extends InputStyleProps {
@@ -24,7 +25,7 @@ interface InputProps extends InputStyleProps {
   title?: string;
   password?: boolean;
   onKeyDown?: (e: any) => void;
-  parentStyle?: strng;
+  parentStyle?: any;
 }
 
 const InputBox = styled("input")<InputStyleProps>`

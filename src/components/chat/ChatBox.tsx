@@ -42,11 +42,6 @@ const ChatBox = (props: ChatBoxProps) => {
       setSocket(socket);
     };
 
-    // 메시지 수신 시 실행되는 코드
-    socket.onmessage = (e) => {
-      console.log(JSON.parse(e.data));
-    };
-
     // 연결이 종료될 때 실행되는 코드
     socket.onclose = () => {
       console.log("WebSocket 연결 종료");
@@ -81,8 +76,14 @@ const ChatBox = (props: ChatBoxProps) => {
         borderRadius: "10px",
       }}
     >
-      {roomInfo.value != "" ? (
-        <ChatMessage roomInfo={roomInfo.value} postMessage={postMessage} />
+      {roomInfo.value != "" && socket ? (
+        <ChatMessage
+          roomInfo={roomInfo.value}
+          postMessage={postMessage}
+          socket={socket}
+          setType={typeInput.setValue}
+          {...messageInput}
+        />
       ) : (
         <ChatList setRoom={roomInfo.setValue} />
       )}

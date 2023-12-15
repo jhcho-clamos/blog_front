@@ -14,7 +14,7 @@ const RecoilRootProvider = ({ children }: RecoilProps) => {
     <RecoilRoot>
       <Layout>
         <Toaster />
-        <Chat />
+
         {children}
       </Layout>
     </RecoilRoot>
