@@ -16,12 +16,19 @@ import apiGroup from "@/config/apiGroup";
 import { useSetRecoilState } from "recoil";
 import { loginSelector } from "@/recoil/login";
 import { useRouter } from "next/navigation";
+import BadgeIcon from "@mui/icons-material/Badge";
 
-const Login = () => {
+interface LoginProps {
+  type: "Login" | "Signup";
+}
+
+const Login = ({ type }: LoginProps) => {
   const idInput = useInput("");
   const pwInput = useInput("");
+  const nameInput = useInput("");
   const idRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
   const setLoginState = useSetRecoilState(loginSelector);
   const router = useRouter();
   const enterArray: string[] = ["enter", "numpadenter"];
@@ -44,21 +51,55 @@ const Login = () => {
 
   const pwEnterAction = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (isInputEnter(e)) {
-      return loginAction;
+      return loginAction();
+    }
+  };
+
+  const nameNextFocus = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (isInputEnter(e)) {
+      return nameRef.current && nameRef.current.focus();
     }
   };
 
   const loginAction = async () => {
-    const request = await apiGroup.authApi.login({
-      id: idInput.value,
-      password: pwInput.value,
-    });
-    setLoginState({
-      id: request.id,
-      name: request.name,
-      createDate: request.createDate,
-    });
-    router.push("/");
+    try {
+      const request = await apiGroup.authApi.login({
+        id: idInput.value,
+        password: pwInput.value,
+      });
+      if (!request) {
+        return toast.error("login fail");
+      }
+      setLoginState({
+        id: request.id,
+        name: request.name,
+        createDate: request.createDate,
+      });
+      router.push("/");
+    } catch (e) {
+      return toast.error("login fail");
+    }
+  };
+
+  const signupAction = async () => {
+    try {
+      const request = await apiGroup.authApi.signup({
+        id: idInput.value,
+        password: pwInput.value,
+        name: nameInput.value,
+      });
+      if (!request) {
+        return toast.error("signup fail");
+      }
+      setLoginState({
+        id: request.id,
+        name: request.name,
+        createDate: request.createDate,
+      });
+      router.push("/");
+    } catch (e) {
+      return toast.error("signup fail");
+    }
   };
 
   return (
@@ -71,7 +112,7 @@ const Login = () => {
               size="2rem"
               style={{ padding: "0 1.5rem 1rem 0" }}
             >
-              Login
+              {type}
             </Text>
             <Divider
               sx={{
@@ -108,16 +149,36 @@ const Login = () => {
             title="password"
             password={true}
             ref={pwRef}
-            onKeyDown={pwEnterAction}
+            onKeyDown={type == "Login" ? pwEnterAction : nameNextFocus}
           />
+
+          {type == "Signup" && (
+            <Input
+              parentStyle={{ margin: "2rem 0" }}
+              icon={
+                <BadgeIcon
+                  sx={{ color: "black", width: "1.6rem", height: "1.6rem" }}
+                />
+              }
+              placeholder={"name"}
+              {...nameInput}
+              className="w-full"
+              title="name"
+              ref={nameRef}
+              onKeyDown={signupAction}
+            />
+          )}
         </Box>
-        <Box className="mt-5">
-          <Link href="/signup">
-            <Text size="1.2rem" color={theme.blue.base}>
-              Signup
-            </Text>
-          </Link>
-        </Box>
+
+        {type == "Login" && (
+          <Box className="mt-5">
+            <Link href="/signup">
+              <Text size="1.2rem" color={theme.blue.base}>
+                Signup
+              </Text>
+            </Link>
+          </Box>
+        )}
 
         <Box flexGrow={1} className="flex items-end justify-center">
           <CustomButton
@@ -125,7 +186,7 @@ const Login = () => {
             hoverColor={theme.blue.hover}
             onClick={loginAction}
           >
-            Login
+            {type}
           </CustomButton>
         </Box>
       </div>

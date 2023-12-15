@@ -12,7 +12,7 @@ const LoginPage = () => {
       }}
       className="flex items-center justify-center"
     >
-      <Login />
+      <Login type="Login" />
     </Box>
   );
 };
