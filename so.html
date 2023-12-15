@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.io Example</title>
+    <script
+      src="https://cdn.socket.io/4.7.2/socket.io.min.js"
+      integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const socket = io("http://localhost:5000", { path: "/ws/chat/msg" });
+
+      socket.on("connect", () => {
+        console.log("connected to server");
+      });
+
+      socket.on("disconnect", () => {
+        console.log("disconnected from server");
+      });
+      socket.on("/chat/msg", (e) => {
+        console.log(e);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Socket.io Example</h1>
+  </body>
+</html>

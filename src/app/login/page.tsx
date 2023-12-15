@@ -6,6 +6,7 @@ const LoginPage = () => {
     <Box
       sx={{
         flexGrow: 1,
+        height: "100%",
         background: "url(/assets/img/background.png) no-repeat center",
         backgroundSize: "contain",
       }}

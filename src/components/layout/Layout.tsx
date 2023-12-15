@@ -15,8 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div
       className="w-full flex-col"
       style={{
-        height: "auto",
-        minHeight: "100vh",
+        height: "100vh",
         position: "relative",
         boxSizing: "border-box",
         background: "#101112",
@@ -25,7 +24,7 @@ const Layout = ({ children }: LayoutProps) => {
       }}
     >
       <Header />
-      <div style={{ padding: "100px 20px" }}>{children}</div>
+      <div style={{ padding: "100px 20px", height: "100%" }}>{children}</div>
     </div>
   );
 };
