@@ -17,6 +17,7 @@ import { useSetRecoilState } from "recoil";
 import { loginSelector } from "@/recoil/login";
 import { useRouter } from "next/navigation";
 import BadgeIcon from "@mui/icons-material/Badge";
+import { enterArray } from "@/util/util";
 
 interface LoginProps {
   type: "Login" | "Signup";
@@ -31,7 +32,6 @@ const Login = ({ type }: LoginProps) => {
   const nameRef = useRef<HTMLInputElement>(null);
   const setLoginState = useSetRecoilState(loginSelector);
   const router = useRouter();
-  const enterArray: string[] = ["enter", "numpadenter"];
 
   useEffect(() => {
     if (idRef.current) {
@@ -192,7 +192,7 @@ const Login = ({ type }: LoginProps) => {
           <CustomButton
             bgColor={theme.blue.base}
             hoverColor={theme.blue.hover}
-            onClick={loginAction}
+            onClick={type == "Login" ? loginAction : signupAction}
           >
             {type}
           </CustomButton>
