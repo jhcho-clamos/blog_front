@@ -19,7 +19,8 @@ const Layout = ({ children }: LayoutProps) => {
     <div
       className="w-full flex-col"
       style={{
-        height: "100vh",
+        height: "auto",
+        minHeight: "100%",
         position: "relative",
         boxSizing: "border-box",
         background: "#101112",

@@ -4,14 +4,14 @@ export interface ChatDefaultProps {
 }
 
 export interface ChatProps_Get extends ChatDefaultProps {
-  roomId: string;
+  roomId: number;
   createDate: string;
 }
 
 export interface ChatProps_Post extends ChatDefaultProps {}
 
 export interface ChatMessageProps {
-  id: string;
+  id: number;
   sender: string;
   roomId: string;
   message: string;

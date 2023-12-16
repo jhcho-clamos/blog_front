@@ -9,51 +9,49 @@ import { ChatMessageProps } from "@/type/chat";
 import { useRecoilValue } from "recoil";
 import { loginSelector } from "@/recoil/login";
 import Input from "@/components/styled/global/Input";
+import Stomp from "stompjs";
 
 interface ChatMessagesProps {
-  socket: WebSocket | null;
   postMessage: Function;
   setType: (e: "ENTER" | "TALK") => void;
   value: any;
   onChange: (e: any) => void;
   setValue: Function;
+  currentMessage: any;
   roomInfo?: any;
 }
 
 const ChatMessage = (props: ChatMessagesProps) => {
-  const [messageCurrent, setMessageCurrent] = useState<ChatMessageProps>();
   const [messageArray, setMessageArray] = useState<ChatMessageProps[]>([]);
   const [mount, setMount] = useState<boolean>(false);
   const userInfo = useRecoilValue(loginSelector);
+
   useEffect(() => {
     setMount(true);
   }, []);
-  useEffect(() => {
-    if (props.socket) {
-      props.socket.onmessage = (e) => {
-        setMessageCurrent(JSON.parse(e.data));
-        // const message: ChatMessageProps = JSON.parse(e.data);
-        // const doc = document.getElementById("chatMessageLine") as HTMLElement;
-        // doc.innerHTML = `<Text style="color:black">${message.message}</Text>`;
-      };
-    }
-  }, [props?.socket]);
 
   useEffect(() => {
-    if (messageCurrent) {
-      setMessageArray([...messageArray, messageCurrent]);
-      const scrollDoc = document.getElementById(
-        "chatMessageLine",
-      ) as HTMLElement;
-      scrollDoc.scrollTo({
-        top: scrollDoc.scrollHeight,
-        behavior: "smooth",
-      });
+    if (props.currentMessage) {
+      setMessageArray([...messageArray, props.currentMessage]);
+
+      scrollToBottom();
     }
-  }, [messageCurrent]);
+  }, [props.currentMessage]);
+
+  const scrollToBottom = () => {
+    const scrollDoc = document.getElementById("chatMessageLine") as HTMLElement;
+    if (scrollDoc) {
+      setTimeout(() => {
+        scrollDoc.scroll({
+          top: scrollDoc.scrollHeight - scrollDoc.clientHeight,
+          behavior: "smooth",
+        });
+      }, 500);
+    }
+  };
 
   useEffect(() => {
-    if (mount && props.socket) {
+    if (mount) {
       props.postMessage();
       props.setType("TALK");
     }
@@ -76,15 +74,30 @@ const ChatMessage = (props: ChatMessagesProps) => {
           borderRadius: "10px 10px 0 0",
           textAlign: "center",
           display: "flex",
-          height: "60px",
+          height: "50px",
         }}
       >
         <Text size="1.3rem" style={{ margin: "0 0.5rem" }}>
           {props?.roomInfo?.roomName}
         </Text>
       </Box>
-      <Box sx={{ padding: "0 1rem", height: "360px", position: "relative" }}>
-        <Box id="chatMessageLine" sx={{ overflow: "auto", height: "inherit" }}>
+      <Box
+        sx={{
+          padding: "1rem 1rem",
+          height: "360px",
+          overflow: "hidden",
+          position: "relative",
+        }}
+      >
+        <Box
+          id="chatMessageLine"
+          sx={{
+            overflow: "auto",
+            padding: "1rem 0",
+            boxSizing: "border-box",
+            height: "inherit",
+          }}
+        >
           {messageArray != null &&
             messageArray?.map((r, index: number) => {
               if (r.type == "ENTER") {
