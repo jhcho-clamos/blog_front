@@ -8,9 +8,14 @@ interface loginProps {
   isLogin: boolean;
 }
 
-const loginState = atom<loginProps | null>({
+const loginState = atom<loginProps>({
   key: "loginState",
-  default: null,
+  default: {
+    id: "",
+    name: "",
+    createDate: "",
+    isLogin: false,
+  },
   effects_UNSTABLE: [localStorageEffect("loginState", "local")],
 });
 
