@@ -1,10 +1,7 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import Text from "@/components/styled/global/Text";
-import theme from "@/setting/theme";
-import { useEffect, useRef, useState } from "react";
-import { ChatMessageProps } from "@/type/chat";
+import { useEffect, useState } from "react";
 import useInput from "@/hooks/useInput";
 import ChatList from "@/components/chat/ChatList";
 import ChatMessage from "@/components/chat/ChatMessage";
@@ -13,7 +10,6 @@ import config from "@/config/config";
 import { useRecoilValue } from "recoil";
 import { loginSelector } from "@/recoil/login";
 import Stomp from "stompjs";
-import SockJS from "sockjs-client";
 import toast from "react-hot-toast";
 
 interface ChatBoxProps {

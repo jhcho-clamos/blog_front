@@ -3,9 +3,7 @@
 import Box from "@mui/material/Box";
 import SendIcon from "@mui/icons-material/Send";
 import theme from "@/setting/theme";
-import { useEffect, useState } from "react";
-import sockJs from "sockjs-client";
-import config from "@/config/config";
+import { useState } from "react";
 import ChatBox from "@/components/chat/ChatBox";
 
 const Chat = () => {

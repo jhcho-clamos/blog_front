@@ -3,13 +3,12 @@
 import Box from "@mui/material/Box";
 import theme from "@/setting/theme";
 import Text from "@/components/styled/global/Text";
-import dayjs from "dayjs";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChatMessageProps } from "@/type/chat";
 import { useRecoilValue } from "recoil";
 import { loginSelector } from "@/recoil/login";
 import Input from "@/components/styled/global/Input";
-import Stomp from "stompjs";
+import dayjs from "dayjs";
 
 interface ChatMessagesProps {
   postMessage: Function;
@@ -121,25 +120,35 @@ const ChatMessage = (props: ChatMessagesProps) => {
                     key={`user-message-index${index}`}
                     sx={{
                       display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      marginBottom: "0.5rem",
                       justifyContent:
                         userInfo?.name == r.sender ? "end" : "start",
                     }}
                   >
-                    <Text color="black">{r.sender}: </Text>
                     <Box
                       sx={{
-                        borderRadius: "10px",
-                        backgroundColor: theme.blue.base,
-                        padding: "0.2rem 1rem",
-                        marginLeft: "0.7rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        marginBottom: "0.5rem",
                       }}
                     >
-                      <Text>{r.message}</Text>
+                      <Text color="black">{r.sender}: </Text>
+                      <Box
+                        sx={{
+                          borderRadius: "10px",
+                          backgroundColor: theme.blue.base,
+                          padding: "0.2rem 1rem",
+                          marginLeft: "0.7rem",
+                          justifyContent: "end",
+                          alignItems: "end",
+                        }}
+                      >
+                        <Text>{r.message}</Text>
+                      </Box>
+                      <Text color="gray" size="0.8rem">
+                        {dayjs(r.updateTime).format("HH:mm")}
+                      </Text>
                     </Box>
-                    <Text>{r.updateTime}</Text>
                   </Box>
                 );
               }

@@ -41,9 +41,6 @@ const ChatList = (props: ChatListProps) => {
     } else {
       needPwStatus.setValue(true);
       clickedRoomInfo.setValue(roomInfo);
-      setTimeout(() => {
-        pwRef.current && pwRef.current.focus();
-      }, 500);
     }
   };
 

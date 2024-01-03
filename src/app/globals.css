@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 @import url("./fonts.css");
+
 body {
   margin: 0;
   font-family: "NotoSans" !important;
   height: 100vh;
   min-width: 1080px;
   position: relative;
-  min-height: 720px;
+  min-height: 1000px;
   font-size: 20px;
 }
