@@ -45,4 +45,4 @@ const nextjsBanner = `
 \`--'  \`--'\`------''--'   '--'   \`--''--' \`-----' \`-----' 
 `;
 
-console.log(nextjsBanner);
+console.log(bannerText + nextjsBanner);
